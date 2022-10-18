@@ -23,13 +23,20 @@ document.addEventListener('DOMContentLoaded', () => {
     addForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const newFilm = addInput.value;
-              favorite = checkbox.checked;
+        let newFilm = addInput.value;
+            //   favorite = checkbox.checked);
 
-        movieDB.movies.push(newFilm);
-        sortArr(movieDB.movies);
+        if (newFilm) {
+            
+            if (newFilm.length > 21) {
+                newFilm = `${newFilm.substring(0, 22)}...`;
+            }
+
+            movieDB.movies.push(newFilm);
+            sortArr(movieDB.movies);
         
-        createMovieList(movieDB.movies, movieList);
+            createMovieList(movieDB.movies, movieList);
+        }
 
         e.target.reset();
     });
